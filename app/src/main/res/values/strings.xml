@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Loudly Test</string>
+    <string name="search_hint">Search Api by Name</string>
 </resources>

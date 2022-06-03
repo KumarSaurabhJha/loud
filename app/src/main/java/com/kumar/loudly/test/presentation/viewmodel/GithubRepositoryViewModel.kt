@@ -45,7 +45,7 @@ class GithubRepositoryViewModel(
     }
 
     private fun onError(throwable: Throwable) {
-        Log.e("RestError", "Error is $throwable")
+        Log.e("RestError", "Error is: $throwable")
         _error.postValue(Event(true))
     }
 
