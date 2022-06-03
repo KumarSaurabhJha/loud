@@ -3,7 +3,7 @@
     android:insetRight="00dp">
 
     <shape>
-        <size android:height="0.5dp" />
+        <size android:height="1.5dp" />
         <solid android:color="@android:color/darker_gray" />
     </shape>
 
