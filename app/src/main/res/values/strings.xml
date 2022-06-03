@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Loudly Test</string>
+
+    <string name="app_name" translatable="false">Loudly Test</string>
+
+    <string name="repo_name" translatable="false">Name: %1$s</string>
+    <string name="repo_size" translatable="false">Size: %1$s</string>
+    <string name="repo_owner" translatable="false">Owner: %1$s</string>
 </resources>
