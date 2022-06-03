@@ -1,6 +1,7 @@
 package com.kumar.loudly.test.application
 
 import android.app.Application
+import com.kumar.loudly.test.di.domainModule
 import com.kumar.loudly.test.di.restApiModule
 import com.kumar.loudly.test.di.restRepositoryModule
 import com.kumar.loudly.test.di.retrofitModule
@@ -20,7 +21,8 @@ class MyApplication : Application() {
             modules(
                 restApiModule,
                 restRepositoryModule,
-                retrofitModule
+                retrofitModule,
+                domainModule
             )
         }
     }
