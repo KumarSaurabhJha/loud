@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Loudly Test</string>
     <string name="search_hint">Search Api by Name</string>
-    <string name="repo_name" translatable="false">Name: %1$s</string>
-    <string name="repo_size" translatable="false">Size: %1$s</string>
-    <string name="repo_owner" translatable="false">Owner: %1$s</string>
+    <string name="user_message">No API, search above with a repo name</string>
+    <string name="repo_name">Name: %1$s</string>
+    <string name="repo_size">Size: %1$s</string>
+    <string name="repo_owner">Owner: %1$s</string>
 </resources>

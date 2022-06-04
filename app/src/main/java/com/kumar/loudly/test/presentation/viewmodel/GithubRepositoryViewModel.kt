@@ -17,25 +17,30 @@ class GithubRepositoryViewModel(
 ) : ViewModel() {
 
     private var fetchDataJob: Job? = null
-    private val apiName: String = "tetris"
 
     private val errorHandler = CoroutineExceptionHandler { _, throwable ->
         onError(throwable = throwable)
     }
-    private val _error = MutableLiveData<Event<Boolean>>()
-    val error: LiveData<Event<Boolean>> get() = _error
+
+    private val _noApi = MutableLiveData<Event<Boolean>>()
+    val noApi: LiveData<Event<Boolean>> get() = _noApi
 
     private val _repoList = MutableLiveData<Event<List<GithubRepositoryDomainModel>>>()
     val repoList: LiveData<Event<List<GithubRepositoryDomainModel>>> get() = _repoList
 
-    fun init() {
+    private fun fetchData(apiName: String) {
         cancelFetchDataJob()
 
         fetchDataJob = viewModelScope.launch(errorHandler) {
-            _repoList.postValue(Event(getGithubRepoUsecase.execute(apiName)))
-        }
 
+            val list = getGithubRepoUsecase.execute(apiName)
+            when (list.isEmpty()) {
+                true -> _noApi.postValue(Event(true))
+                else -> _repoList.postValue(Event(list))
+            }
+        }
     }
+
 
     private fun cancelFetchDataJob() {
         fetchDataJob?.let {
@@ -46,11 +51,16 @@ class GithubRepositoryViewModel(
 
     private fun onError(throwable: Throwable) {
         Log.e("RestError", "Error is: $throwable")
-        _error.postValue(Event(true))
+        _noApi.postValue(Event(true))
     }
 
-    fun onRepoClick(githubRepositoryDomainModel: GithubRepositoryDomainModel) {
-
+    fun onSearchApi(apiName: String?) {
+        apiName?.let {
+            when (it.isNotBlank()) {
+                true -> fetchData(it)
+                else -> _noApi.postValue(Event(true))
+            }
+        }
     }
 
 }
