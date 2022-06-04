@@ -40,6 +40,8 @@ dependencies {
     def koin_version = '3.2.0'
     def architecture_version = '2.5.0-rc01'
     def navigation_version = '2.4.2'
+    def paging_version = "3.1.1"
+
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
@@ -75,6 +77,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$architecture_version"
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+    //Paging
+    implementation "androidx.paging:paging-runtime:$paging_version"
 
     testImplementation "io.insert-koin:koin-test:$koin_version"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1"
